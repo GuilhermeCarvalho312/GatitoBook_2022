@@ -1,0 +1,4 @@
+AULA - 1: Home
+Após descompactar a pasta, entre pela sua linha de comando na pasta api, use o comando npm i, para instalar as dependências do back-end, e execute-o com o comando npm start. O back-end deve ser executado durante os nossos exercícios.
+--strict ativa o strict no packagejson da aplicação
+-d = dryRun significa que são alterações de teste, o seu projeto principal nao foi alterado. Serve pra ver se as alterações foram feitas no lugar correto
