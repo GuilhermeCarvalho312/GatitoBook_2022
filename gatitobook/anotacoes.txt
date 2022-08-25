@@ -8,3 +8,15 @@ Aprendemos como configurar o Bootstrap como framework de CSS global para nossa a
 Começamos também a estruturar nossa aplicação utilizando o módulo Angular. Com a técnica do lazy loading, melhoramos o carregamento inicial da nossa aplicação.
 Estudamos também como é composto um componente Angular e quais são os arquivos que o angular/cli gera para nós.
 Começamos a desenvolver nossa primeira funcionalidade: o formulário de Login.
+
+
+
+
+AULA-2: Login
+Observable = Observable é uma funcionalidade da biblioteca rxjs, que é utilizada internamente pelo framework e já é instalada quando você cria uma nova aplicação Angular. Com Observables, conseguimos lidar com transferência de dados assíncrona.
+O angular possui duas formas de lidar com formulários. O template-driven e o reactive-forms
+o processamento síncrono é aquele que acontece em sequência e ordenado, seguindo uma fila, e o outro processamento assíncrono só começa após o atual ser concluído.
+
+.subscribe = é o .then do angular11
+--routing = se possuir rotas no modulo
+
