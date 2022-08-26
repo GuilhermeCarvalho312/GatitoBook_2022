@@ -16,7 +16,14 @@ AULA-2: Login
 Observable = Observable é uma funcionalidade da biblioteca rxjs, que é utilizada internamente pelo framework e já é instalada quando você cria uma nova aplicação Angular. Com Observables, conseguimos lidar com transferência de dados assíncrona.
 O angular possui duas formas de lidar com formulários. O template-driven e o reactive-forms
 o processamento síncrono é aquele que acontece em sequência e ordenado, seguindo uma fila, e o outro processamento assíncrono só começa após o atual ser concluído.
+Para fazer o tratamento de rotas do angular é necessario utilizar o router
 
 .subscribe = é o .then do angular11
 --routing = se possuir rotas no modulo
+
+Como interagir com nosso backend utilizando o serviço HttpClient do Angular.
+Como utilizar o mecanismo de Injeção de dependência do Angular para criar nossos próprios serviços e injetá-los nos nossos componentes.
+Vimos também como criar um formulário do tipo Template Driven, em que toda a montagem e a regra de negócio ficam no arquivo de template, e o Angular realiza o controle do modelo de dados utilizando o componente ngModel.
+Criamos um componente de mensagens genérico e aprendemos como receber parâmetros utilizando o @Input e como mostrar conteúdo dinâmico utilizando a interpolação do Angular.
+Por fim, implementamos as validações do nosso formulário HTML utilizando o ngModel para pegar a referência do campo para avaliar se ele está válido ou não.
 
