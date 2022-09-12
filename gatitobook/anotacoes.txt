@@ -43,3 +43,9 @@ Exploramos o tópico de validações em formulário reativos no Angular. e apren
 Criamos uma validação customizada para um campo e vimos quais são os requisitos para uma função ser reconhecida como validação no Angular.
 Também trabalhamos em uma função de validação que avaliava mais do que um campo do nosso formulário.
 Por fim, criamos uma validação que consulta o backend da nossa aplicação e aprendemos sobre os operadores RXJS, uma biblioteca poderosa que o Angular utiliza.
+
+AULA-5: Autenticação
+Token JWT: Criptografia de JSON. Para que serve token JWT?
+Um JWT é um padrão para autenticação e troca de informações definido pela RFC7519. Nele é possível armazenar de forma segura e compacta objetos JSON. Este token é um código Base64 e pode ser assinado usando um segredo ou par de chaves privadas/públicas.
+
+
