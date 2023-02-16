@@ -11,17 +11,17 @@
 
 ## O que cada curso ensinou:
 ### Angular: boas práticas em arquiteturas e formulários: 
-          - Entenda como começar um projeto com melhores validações de tipos utilizando o modo strict
-          - Organize melhor seu projeto Angular utilizando módulos
-          - Melhore a performance da sua aplicação conhecendo o Lazy Loading
-          - Aprenda a criar formulários simples com módulo de Formulários Template Driven
-          - Crie formulários elaborados utilizando o módulo de Formulários Reativos
-          - Desenvolva validações síncronas e assíncronas para seus formulários.
-          - Aprenda como utilizar token JWT no seu projeto Angular
+- Entenda como começar um projeto com melhores validações de tipos utilizando o modo strict
+- Organize melhor seu projeto Angular utilizando módulos
+- Melhore a performance da sua aplicação conhecendo o Lazy Loading
+- Aprenda a criar formulários simples com módulo de Formulários Template Driven
+- Crie formulários elaborados utilizando o módulo de Formulários Reativos
+- Desenvolva validações síncronas e assíncronas para seus formulários.
+- Aprenda como utilizar token JWT no seu projeto Angular
 
 ### Angular: controle o fluxo de navegação:
-          - Aprenda como utilizar a composição para criar componentes reutilizáveis e melhorar sua produtividade.
-          - Entenda como realizar a operação de upload de fotos no seu front-end.
-          - Otimize o seu site utilizando serviços do tipo Resolver.
-          - Controle o fluxo de navegação do seu usuário com guarda de rotas.
-          - Aprenda a manipular as requisições da sua aplicação criando serviços do tipo Interceptor.
+- Aprenda como utilizar a composição para criar componentes reutilizáveis e melhorar sua produtividade.
+- Entenda como realizar a operação de upload de fotos no seu front-end.
+- Otimize o seu site utilizando serviços do tipo Resolver.
+- Controle o fluxo de navegação do seu usuário com guarda de rotas.
+- Aprenda a manipular as requisições da sua aplicação criando serviços do tipo Interceptor.
