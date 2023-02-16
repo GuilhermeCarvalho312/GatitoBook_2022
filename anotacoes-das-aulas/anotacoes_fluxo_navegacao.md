@@ -183,6 +183,8 @@
   O método pode retornar um booleano diretamente ou uma Promise que resolve em um booleano, um UrlTree ou uma Observable que emite um booleano ou UrlTree. Isso permite que o método canLoad() seja assíncrono, se necessário.
 
   Em resumo, o código implementa um Guarda de Rotas (AutenticacaoGuard) que verifica se o usuário está autenticado antes de carregar uma determinada rota. Se o usuário não estiver autenticado, ele será redirecionado para a página de login. Caso contrário, a rota será carregada normalmente.
+  
+---
 
 
 
