@@ -6,6 +6,7 @@
 - Esse projeto foi feito em Angular11
 - O projeto é uma rede social de gatos
 - Através desse projeto simples foi possível aplicar conhecimentos sobre Angular11
+- O projeto GatitoBook_2022 é uma aplicação web desenvolvida em Angular 11, que tem como objetivo simular uma rede social para gatos, permitindo aos usuários se cadastrarem, postarem fotos e interagirem com outras pessoas na plataforma.
 
 ## Dois cursos foram utilizados para realizar esse projeto, sendo eles:
 1. Angular: boas práticas em arquiteturas e formulários. Link: https://cursos.alura.com.br/course/angular-boas-praticas-arquiteturas-formularios
