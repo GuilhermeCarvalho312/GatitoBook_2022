@@ -186,6 +186,108 @@
   
 ---
 
+  ## O que foi feito na aula 2: 
+    1. Como criar uma página utilizando diversos componentes reutilizáveis utilizando a composição.
+    2. Aprendemos a utilizar o operador switchMap para concatenar dois fluxos de informações e não realizar um subscribe dentro de outro subscribe.
+    3. Aprendemos a utilizar guarda de rotas para controlar o fluxo de navegação do usuário em nossa aplicação.
+---
+
+# Aula 3: Detalhe do animal
+
+  ## Sobre o ActivatedRoute:
+
+    O ActivatedRoute é uma classe do Angular que é usada para obter informações sobre a rota ativa na aplicação. Ele é um objeto que contém informações sobre a rota atual, incluindo o caminho da URL, parâmetros de consulta e parâmetros de rota.
+    A classe ActivatedRoute é injetada em um componente ou serviço que está sendo usado em uma rota e fornece informações sobre a rota atual.
+
+  ## Sobre o Interceptor:
+  
+    Em Angular 11, um interceptor é um recurso que permite que você intercepte as solicitações HTTP feitas por sua aplicação antes que elas sejam enviadas para o servidor e/ou intercepte as respostas recebidas do servidor antes que elas sejam entregues aos componentes da sua aplicação.
+
+  ## Sobre o método pipe: 
+    O método pipe em Angular 11 é usado para compor funções que podem ser aplicadas a um objeto de forma sequencial. Ele é frequentemente usado em combinação com o operador de RxJS |, permitindo que você crie cadeias de operações em observáveis.
+    Quando você usa o método pipe em um objeto, você está criando uma nova cadeia de operações que será aplicada a esse objeto. Por exemplo, você pode criar uma cadeia de operações que inclui filtragem, mapeamento e redução em um array ou em um observável.
+
+    Aqui está um exemplo simples de como usar o método pipe com observáveis em Angular 11:
+
+    ```typescript
+        import { Component } from '@angular/core';
+        import { of } from 'rxjs';
+        import { map, filter } from 'rxjs/operators';
+
+        @Component({
+          selector: 'app-root',
+          template: '<div>{{ mensagem }}</div>',
+        })
+        export class AppComponent {
+          mensagem: string;
+
+          constructor() {
+            const numeros = of(1, 2, 3, 4, 5);
+            this.mensagem = 'Números pares: ';
+
+            numeros
+              .pipe(
+                filter(numero => numero % 2 === 0),
+                map(numero => ` ${numero}`)
+              )
+              .subscribe(resultado => this.mensagem += resultado);
+          }
+        }
+    ```
+
+    Neste exemplo, temos um componente que cria um observable numeros com cinco números inteiros e, em seguida, aplica uma cadeia de operações usando o método pipe.
+
+    Na cadeia de operações, usamos o método filter para filtrar apenas os números pares e o método map para converter cada número em uma string contendo um espaço e o número. Em seguida, adicionamos essas strings a uma mensagem que será exibida no template do componente.
+
+    Por fim, usamos o método subscribe para se inscrever no observable resultante da cadeia de operações e exibir a mensagem final no template.
+
+    Em resumo, o método pipe em Angular 11 é usado para criar cadeias de operações em objetos, como observáveis, permitindo que você aplique funções de forma sequencial para transformar ou manipular esses objetos. Ele é frequentemente usado em combinação com o operador | do RxJS.
+
+  ## Sobre os operadores *mapTo* e *catchError*:
+    O mapTo e o catchError são operadores do RxJS que podem ser usados com o método pipe em Angular 11 para transformar e manipular os valores de um Observable.
+
+    O operador mapTo transforma cada valor emitido por um Observable em um valor específico. Por exemplo, se você tem um Observable que emite um valor booleano true, você pode usar o operador mapTo para transformar esse valor em um valor numérico 1. O valor emitido pelo operador mapTo não depende do valor emitido pelo Observable original.
+
+    Aqui está um exemplo de como usar o operador mapTo para transformar um Observable que emite um valor booleano true em um Observable que emite um valor numérico 1:
+
+    ```typescript
+        import { of } from 'rxjs';
+        import { mapTo } from 'rxjs/operators';
+
+        const observable = of(true);
+
+        observable.pipe(
+          mapTo(1)
+        ).subscribe(value => console.log(value)); // saída: 1
+    ```
+
+    O operador catchError é usado para capturar erros emitidos por um Observable e tratar esses erros. Em geral, quando um erro é emitido por um Observable, ele encerra a execução do Observable. Mas com o operador catchError, você pode interceptar o erro e fazer algo com ele, como retornar um valor padrão ou lançar um novo erro.
+
+    Aqui está um exemplo de como usar o operador catchError para tratar erros em um Observable:
+
+    ```typescript
+        import { throwError, of } from 'rxjs';
+        import { catchError } from 'rxjs/operators';
+
+        const observable = throwError('Erro');
+
+        observable.pipe(
+          catchError(error => of('Valor padrão'))
+        ).subscribe(value => console.log(value)); // saída: Valor padrão
+    ```
+    Neste exemplo, o Observable observable emite um erro usando a função throwError. Em seguida, usamos o operador catchError para capturar o erro e retornar um valor padrão ('Valor padrão') usando a função of.
+
+    Em resumo, o operador *mapTo* é usado para transformar valores emitidos por um Observable em valores específicos, enquanto o operador *catchError* é usado para capturar e tratar erros emitidos por um Observable. Ambos podem ser usados com o método pipe em Angular 11 para transformar e manipular os valores de um Observable.
+
+  ## O que foi feito na Aula 3:
+    1. Como parametrizar a rota da aplicação e utilizar essa informação com o serviço ActivatedRoute
+
+    2. Aprendemos como anexar o token a todas as requisições ao backend criando um serviço do tipo Interceptor
+
+    3. Criamos as funções de curtir e excluir e aprendemos mais sobre os operadores *mapTo* e *catchError*
+
+
+
 
 
 
