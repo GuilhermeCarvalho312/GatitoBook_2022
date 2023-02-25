@@ -19,7 +19,8 @@ export class AnimaisService {
   ) {}
 
   /**
-   * Retorna uma lista de animais do usuário com base no nome do usuário.
+   * @name listaDoUsuarios
+   * @description Retorna uma lista de animais do usuário com base no nome do usuário.
    * @param nomeDoUsuario O nome do usuário cujos animais serão listados.
    * @returns Um Observable que emite uma lista de animais do usuário.
    */
@@ -28,7 +29,8 @@ export class AnimaisService {
   }
 
   /**
-   * Busca um animal específico com base em seu identificador único.
+   * @name buscaPorId
+   * @description Busca um animal específico com base em seu identificador único.
    * @param id O identificador único do animal a ser buscado.
    * @returns Um Observable que emite o animal encontrado.
    */
@@ -37,7 +39,8 @@ export class AnimaisService {
   }
 
   /**
-   * Exclui um animal específico com base em seu identificador único.
+   * @name excluirAnimal
+   * @description Exclui um animal específico com base em seu identificador único.
    * @param id O identificador único do animal a ser excluído.
    * @returns Um Observable que emite o animal excluído.
    */
@@ -46,7 +49,8 @@ export class AnimaisService {
   }
 
   /**
-   * Faz uma requisição HTTP do tipo POST para curtir uma foto de um animal.
+   * @name curtir
+   * @description Faz uma requisição HTTP do tipo POST para curtir uma foto de um animal.
    * @param id O identificador único da foto do animal que será curtida.
    * @returns Um Observable que emite um booleano `true` em caso de sucesso ou um booleano `false` caso a foto já tenha sido curtida anteriormente.
    */

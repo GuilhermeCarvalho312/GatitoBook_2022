@@ -284,6 +284,98 @@
 
   3. Criamos as funções de curtir e excluir e aprendemos mais sobre os operadores *mapTo* e *catchError*
 
+---
+
+# Aula 4: Comentários
+
+  ## Sobre o método *switchMap*:
+  O método **switchMap** é um operador do RxJS, que é uma biblioteca usada em Angular 11 para trabalhar com programação reativa. O **switchMap** é usado para transformar um Observable em outro Observable, permitindo a composição de várias fontes de dados em um único fluxo de dados.
+
+  O método **switchMap** é usado para fazer uma operação de "troca" (ou "switch") entre um Observable fonte e um Observable secundário. Ele recebe uma função como argumento, que é chamada para cada valor emitido pelo Observable fonte. Essa função retorna um novo Observable, que substituirá o Observable fonte. Em outras palavras, o **switchMap** troca um Observable por outro.
+
+  Por exemplo, imagine que você tenha um serviço que faz uma chamada HTTP para buscar dados de um servidor. Usando o **switchMap**, você pode transformar essa chamada HTTP em um Observable que emite os dados retornados pelo servidor. Você pode, então, usar o resultado desse Observable para fazer outra chamada HTTP, e assim por diante.
+
+  Aqui está um exemplo de como o switchMap pode ser usado em um componente Angular:
+  ```typescript
+    import { Component } from '@angular/core';
+    import { Observable } from 'rxjs';
+    import { switchMap } from 'rxjs/operators';
+    import { DataService } from './data.service';
+
+    @Component({
+      selector: 'app-meus-dados',
+      template: `
+        <div *ngIf="dados$ | async as dados">
+          <h2>{{ dados.nome }}</h2>
+          <p>{{ dados.endereco }}</p>
+        </div>
+      `
+    })
+    export class MeusDadosComponent {
+      dados$: Observable<any>;
+
+      constructor(private dataService: DataService) { }
+
+      ngOnInit() {
+        this.dados$ = this.dataService.getUsuario()
+          .pipe(switchMap(usuario => this.dataService.getEndereco(usuario.id)));
+      }
+    }
+  ```
+  Neste exemplo, o componente MeusDadosComponent usa o serviço DataService para buscar dados de um usuário e seu endereço. O método getUsuario() retorna um Observable que emite um objeto usuario, que contém um id. Usando o switchMap, o componente pode trocar o Observable emitido por getUsuario() por outro Observable emitido por getEndereco(usuario.id), que busca o endereço do usuário pelo seu ID. O resultado é que o Observable final dados$ emite um objeto que contém as informações do usuário e do endereço. Quando a página é renderizada, as informações são exibidas usando o *ngIf e a sintaxe do async pipe.
+
+  ## Sobre o método *tap*:
+  O método tap é um operador do RxJS que é comumente usado em Angular 11 para depuração, logging e efeitos colaterais. O tap não altera o fluxo de dados do Observable, mas permite executar uma função com os dados emitidos pelo Observable, sem afetar a saída do Observable.
+
+  O tap recebe uma função como argumento, que é chamada para cada valor emitido pelo Observable. Essa função pode fazer qualquer coisa, como imprimir informações no console, atualizar uma variável, fazer uma chamada de serviço ou qualquer outra operação que não afete o fluxo de dados do Observable.
+
+  Por exemplo, imagine que você tenha um componente que faz uma chamada HTTP para buscar dados de um servidor e, em seguida, os exibe em uma tabela. Você pode usar o método tap para imprimir os dados no console para depuração e para atualizar uma variável que controla se os dados foram carregados com sucesso.
+
+  Aqui está um exemplo de como o tap pode ser usado em um componente Angular:
+  ```typescript
+  import { Component } from '@angular/core';
+  import { HttpClient } from '@angular/common/http';
+  import { tap } from 'rxjs/operators';
+
+  @Component({
+    selector: 'app-meus-dados',
+    template: `
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.telefone }}</td>
+          </tr>
+        </tbody>
+      </table>
+    `
+  })
+  export class MeusDadosComponent {
+    usuarios: any[];
+
+    constructor(private http: HttpClient) { }
+
+    ngOnInit() {
+      this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+        .pipe(tap(usuarios => console.log(usuarios)))
+        .subscribe(usuarios => this.usuarios = usuarios);
+    }
+  }
+  ```
+  Neste exemplo, o componente MeusDadosComponent usa o serviço HttpClient do Angular para buscar dados de usuários de uma API pública. Usando o método tap, o componente pode imprimir os dados no console para depuração. Além disso, o tap atualiza uma variável usuarios com os dados retornados pela chamada HTTP. Finalmente, o componente usa o *ngFor para exibir os dados em uma tabela.
+
+  Em resumo, o método tap é usado para executar efeitos colaterais em um Observable, sem afetar seu fluxo de dados. Ele é útil para depuração, logging e atualização de variáveis, permitindo que você observe o fluxo de dados do Observable e execute ações secundárias ao mesmo tempo.
+
+
+
 
 
 
