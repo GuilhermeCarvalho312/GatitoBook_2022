@@ -19,12 +19,12 @@ export class AnimaisService {
   ) {}
 
   /**
-   * @name listaDoUsuarios
+   * @name listaDoUsuario
    * @description Retorna uma lista de animais do usuário com base no nome do usuário.
    * @param nomeDoUsuario O nome do usuário cujos animais serão listados.
    * @returns Um Observable que emite uma lista de animais do usuário.
    */
-  public listaDoUsuarios(nomeDoUsuario: string): Observable<Animais> {
+  public listaDoUsuario(nomeDoUsuario: string): Observable<Animais> {
     return this.httpClient.get<Animais>(`${API}/${nomeDoUsuario}/photos`);
   }
 

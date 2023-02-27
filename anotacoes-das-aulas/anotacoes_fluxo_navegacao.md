@@ -374,6 +374,15 @@
 
   Em resumo, o método tap é usado para executar efeitos colaterais em um Observable, sem afetar seu fluxo de dados. Ele é útil para depuração, logging e atualização de variáveis, permitindo que você observe o fluxo de dados do Observable e execute ações secundárias ao mesmo tempo.
 
+  ## Sobre o **Resolver**:
+  Em Angular 11, o "resolver" é um recurso que permite pré-carregar dados antes de carregar um componente. Ele é usado para resolver dados que um componente precisa antes que o próprio componente seja exibido na tela.
+
+  O Resolver é uma classe que implementa a interface "Resolve" e fornece uma lógica personalizada para pré-carregar dados antes que um componente seja carregado. O Resolver pode ser adicionado a uma rota em um arquivo de roteamento do Angular. Quando uma rota com um Resolver é acionada, o Resolver é chamado para pré-carregar os dados necessários. Somente quando o Resolver for concluído, o componente será carregado.
+
+  O Resolver é útil em situações em que um componente precisa de dados de um serviço ou API antes que ele possa ser exibido na tela. Pré-carregar esses dados pode melhorar o desempenho da aplicação, pois o usuário não precisa esperar pela resposta da API ou serviço após a exibição do componente. Além disso, o Resolver pode ser usado para validar as permissões do usuário antes de permitir que um componente seja exibido.
+
+  Em resumo, a função do Resolver em Angular 11 é pré-carregar dados necessários para um componente antes que o próprio componente seja exibido na tela.
+
 
 
 

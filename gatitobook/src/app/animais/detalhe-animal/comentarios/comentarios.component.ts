@@ -2,9 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { Usuario } from 'src/app/autenticacao/usuario/usuario';
-import { UsuarioService } from 'src/app/autenticacao/usuario/usuario.service';
-import { Comentarios } from './comentario';
+import { Comentario, Comentarios } from './comentario';
 import { ComentariosService } from './comentarios.service';
 
 @Component({
@@ -16,17 +14,36 @@ export class ComentariosComponent implements OnInit {
   @Input() id!: number;
   comentarios$!: Observable<Comentarios>;
   comentarioForm!: FormGroup;
-  nomeUsuario!: Observable<Usuario>;
+  nomeUsuario!: string;
 
   constructor(
     private comentariosService: ComentariosService,
-    private formBuilder: FormBuilder,
-    private usuarioService: UsuarioService
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
-    this.nomeUsuario = this.usuarioService.retornaUsuario();
+    this.inicializarComentarios();
+    this.inicializarFormulario();
+  }
+
+  /**
+   * @name inicializarComentarios
+   * @description Inicializa os comentários buscando-os no servidor e extraindo o nome do usuário do primeiro comentário.
+   * @returns {void}
+   */
+  private inicializarComentarios(): void {
     this.comentarios$ = this.comentariosService.buscaComentario(this.id);
+    this.comentarios$.subscribe((responseComentarios) => {
+      this.nomeUsuario = responseComentarios[0].userName;
+    });
+  }
+
+  /**
+   * @name inicializarFormulario
+   * @description Inicializa o formulário de comentários com as validações necessárias.
+   * @returns {void}
+   */
+  private inicializarFormulario(): void {
     this.comentarioForm = this.formBuilder.group({
       comentario: ['', Validators.maxLength(300)],
     });
@@ -45,7 +62,7 @@ export class ComentariosComponent implements OnInit {
         switchMap(() => this.comentariosService.buscaComentario(this.id)),
         tap(() => {
           this.comentarioForm.reset();
-          alert(`${this.nomeUsuario},seu comentário foi salvo!`);
+          alert(`${this.nomeUsuario}, seu comentário foi salvo!`);
         })
       );
   }
