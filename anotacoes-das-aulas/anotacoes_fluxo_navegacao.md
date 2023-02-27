@@ -187,104 +187,207 @@
 ---
 
   ## O que foi feito na aula 2: 
-    1. Como criar uma página utilizando diversos componentes reutilizáveis utilizando a composição.
-    2. Aprendemos a utilizar o operador switchMap para concatenar dois fluxos de informações e não realizar um subscribe dentro de outro subscribe.
-    3. Aprendemos a utilizar guarda de rotas para controlar o fluxo de navegação do usuário em nossa aplicação.
+  1. Como criar uma página utilizando diversos componentes reutilizáveis utilizando a composição.
+  2. Aprendemos a utilizar o operador switchMap para concatenar dois fluxos de informações e não realizar um subscribe dentro de outro subscribe.
+  3. Aprendemos a utilizar guarda de rotas para controlar o fluxo de navegação do usuário em nossa aplicação.
 ---
 
 # Aula 3: Detalhe do animal
 
   ## Sobre o ActivatedRoute:
-
-    O ActivatedRoute é uma classe do Angular que é usada para obter informações sobre a rota ativa na aplicação. Ele é um objeto que contém informações sobre a rota atual, incluindo o caminho da URL, parâmetros de consulta e parâmetros de rota.
-    A classe ActivatedRoute é injetada em um componente ou serviço que está sendo usado em uma rota e fornece informações sobre a rota atual.
+  O ActivatedRoute é uma classe do Angular que é usada para obter informações sobre a rota ativa na aplicação. Ele é um objeto que contém informações sobre a rota atual, incluindo o caminho da URL, parâmetros de consulta e parâmetros de rota.
+  A classe ActivatedRoute é injetada em um componente ou serviço que está sendo usado em uma rota e fornece informações sobre a rota atual.
 
   ## Sobre o Interceptor:
-  
-    Em Angular 11, um interceptor é um recurso que permite que você intercepte as solicitações HTTP feitas por sua aplicação antes que elas sejam enviadas para o servidor e/ou intercepte as respostas recebidas do servidor antes que elas sejam entregues aos componentes da sua aplicação.
+  Em Angular 11, um interceptor é um recurso que permite que você intercepte as solicitações HTTP feitas por sua aplicação antes que elas sejam enviadas para o servidor e/ou intercepte as respostas recebidas do servidor antes que elas sejam entregues aos componentes da sua aplicação.
 
   ## Sobre o método pipe: 
-    O método pipe em Angular 11 é usado para compor funções que podem ser aplicadas a um objeto de forma sequencial. Ele é frequentemente usado em combinação com o operador de RxJS |, permitindo que você crie cadeias de operações em observáveis.
-    Quando você usa o método pipe em um objeto, você está criando uma nova cadeia de operações que será aplicada a esse objeto. Por exemplo, você pode criar uma cadeia de operações que inclui filtragem, mapeamento e redução em um array ou em um observável.
+  O método pipe em Angular 11 é usado para compor funções que podem ser aplicadas a um objeto de forma sequencial. Ele é frequentemente usado em combinação com o operador de RxJS |, permitindo que você crie cadeias de operações em observáveis.
+  Quando você usa o método pipe em um objeto, você está criando uma nova cadeia de operações que será aplicada a esse objeto. Por exemplo, você pode criar uma cadeia de operações que inclui filtragem, mapeamento e redução em um array ou em um observável.
 
-    Aqui está um exemplo simples de como usar o método pipe com observáveis em Angular 11:
+  Aqui está um exemplo simples de como usar o método pipe com observáveis em Angular 11:
 
-    ```typescript
-        import { Component } from '@angular/core';
-        import { of } from 'rxjs';
-        import { map, filter } from 'rxjs/operators';
+  ```typescript
+      import { Component } from '@angular/core';
+      import { of } from 'rxjs';
+      import { map, filter } from 'rxjs/operators';
 
-        @Component({
-          selector: 'app-root',
-          template: '<div>{{ mensagem }}</div>',
-        })
-        export class AppComponent {
-          mensagem: string;
+      @Component({
+        selector: 'app-root',
+        template: '<div>{{ mensagem }}</div>',
+      })
+      export class AppComponent {
+        mensagem: string;
 
-          constructor() {
-            const numeros = of(1, 2, 3, 4, 5);
-            this.mensagem = 'Números pares: ';
+        constructor() {
+          const numeros = of(1, 2, 3, 4, 5);
+          this.mensagem = 'Números pares: ';
 
-            numeros
-              .pipe(
-                filter(numero => numero % 2 === 0),
-                map(numero => ` ${numero}`)
-              )
-              .subscribe(resultado => this.mensagem += resultado);
-          }
+          numeros
+            .pipe(
+              filter(numero => numero % 2 === 0),
+              map(numero => ` ${numero}`)
+            )
+            .subscribe(resultado => this.mensagem += resultado);
         }
-    ```
+      }
+  ```
 
-    Neste exemplo, temos um componente que cria um observable numeros com cinco números inteiros e, em seguida, aplica uma cadeia de operações usando o método pipe.
+  Neste exemplo, temos um componente que cria um observable numeros com cinco números inteiros e, em seguida, aplica uma cadeia de operações usando o método pipe.
 
-    Na cadeia de operações, usamos o método filter para filtrar apenas os números pares e o método map para converter cada número em uma string contendo um espaço e o número. Em seguida, adicionamos essas strings a uma mensagem que será exibida no template do componente.
+  Na cadeia de operações, usamos o método filter para filtrar apenas os números pares e o método map para converter cada número em uma string contendo um espaço e o número. Em seguida, adicionamos essas strings a uma mensagem que será exibida no template do componente.
 
-    Por fim, usamos o método subscribe para se inscrever no observable resultante da cadeia de operações e exibir a mensagem final no template.
+  Por fim, usamos o método subscribe para se inscrever no observable resultante da cadeia de operações e exibir a mensagem final no template.
 
-    Em resumo, o método pipe em Angular 11 é usado para criar cadeias de operações em objetos, como observáveis, permitindo que você aplique funções de forma sequencial para transformar ou manipular esses objetos. Ele é frequentemente usado em combinação com o operador | do RxJS.
+  Em resumo, o método pipe em Angular 11 é usado para criar cadeias de operações em objetos, como observáveis, permitindo que você aplique funções de forma sequencial para transformar ou manipular esses objetos. Ele é frequentemente usado em combinação com o operador | do RxJS.
 
   ## Sobre os operadores *mapTo* e *catchError*:
-    O mapTo e o catchError são operadores do RxJS que podem ser usados com o método pipe em Angular 11 para transformar e manipular os valores de um Observable.
+  O mapTo e o catchError são operadores do RxJS que podem ser usados com o método pipe em Angular 11 para transformar e manipular os valores de um Observable.
 
-    O operador mapTo transforma cada valor emitido por um Observable em um valor específico. Por exemplo, se você tem um Observable que emite um valor booleano true, você pode usar o operador mapTo para transformar esse valor em um valor numérico 1. O valor emitido pelo operador mapTo não depende do valor emitido pelo Observable original.
+  O operador mapTo transforma cada valor emitido por um Observable em um valor específico. Por exemplo, se você tem um Observable que emite um valor booleano true, você pode usar o operador mapTo para transformar esse valor em um valor numérico 1. O valor emitido pelo operador mapTo não depende do valor emitido pelo Observable original.
 
-    Aqui está um exemplo de como usar o operador mapTo para transformar um Observable que emite um valor booleano true em um Observable que emite um valor numérico 1:
+  Aqui está um exemplo de como usar o operador mapTo para transformar um Observable que emite um valor booleano true em um Observable que emite um valor numérico 1:
 
-    ```typescript
-        import { of } from 'rxjs';
-        import { mapTo } from 'rxjs/operators';
+  ```typescript
+      import { of } from 'rxjs';
+      import { mapTo } from 'rxjs/operators';
 
-        const observable = of(true);
+      const observable = of(true);
 
-        observable.pipe(
-          mapTo(1)
-        ).subscribe(value => console.log(value)); // saída: 1
-    ```
+      observable.pipe(
+        mapTo(1)
+      ).subscribe(value => console.log(value)); // saída: 1
+  ```
 
-    O operador catchError é usado para capturar erros emitidos por um Observable e tratar esses erros. Em geral, quando um erro é emitido por um Observable, ele encerra a execução do Observable. Mas com o operador catchError, você pode interceptar o erro e fazer algo com ele, como retornar um valor padrão ou lançar um novo erro.
+  O operador catchError é usado para capturar erros emitidos por um Observable e tratar esses erros. Em geral, quando um erro é emitido por um Observable, ele encerra a execução do Observable. Mas com o operador catchError, você pode interceptar o erro e fazer algo com ele, como retornar um valor padrão ou lançar um novo erro.
 
-    Aqui está um exemplo de como usar o operador catchError para tratar erros em um Observable:
+  Aqui está um exemplo de como usar o operador catchError para tratar erros em um Observable:
 
-    ```typescript
-        import { throwError, of } from 'rxjs';
-        import { catchError } from 'rxjs/operators';
+  ```typescript
+      import { throwError, of } from 'rxjs';
+      import { catchError } from 'rxjs/operators';
 
-        const observable = throwError('Erro');
+      const observable = throwError('Erro');
 
-        observable.pipe(
-          catchError(error => of('Valor padrão'))
-        ).subscribe(value => console.log(value)); // saída: Valor padrão
-    ```
-    Neste exemplo, o Observable observable emite um erro usando a função throwError. Em seguida, usamos o operador catchError para capturar o erro e retornar um valor padrão ('Valor padrão') usando a função of.
+      observable.pipe(
+        catchError(error => of('Valor padrão'))
+      ).subscribe(value => console.log(value)); // saída: Valor padrão
+  ```
+  Neste exemplo, o Observable observable emite um erro usando a função throwError. Em seguida, usamos o operador catchError para capturar o erro e retornar um valor padrão ('Valor padrão') usando a função of.
 
-    Em resumo, o operador *mapTo* é usado para transformar valores emitidos por um Observable em valores específicos, enquanto o operador *catchError* é usado para capturar e tratar erros emitidos por um Observable. Ambos podem ser usados com o método pipe em Angular 11 para transformar e manipular os valores de um Observable.
+  Em resumo, o operador *mapTo* é usado para transformar valores emitidos por um Observable em valores específicos, enquanto o operador *catchError* é usado para capturar e tratar erros emitidos por um Observable. Ambos podem ser usados com o método pipe em Angular 11 para transformar e manipular os valores de um Observable.
 
   ## O que foi feito na Aula 3:
-    1. Como parametrizar a rota da aplicação e utilizar essa informação com o serviço ActivatedRoute
+  1. Como parametrizar a rota da aplicação e utilizar essa informação com o serviço ActivatedRoute
 
-    2. Aprendemos como anexar o token a todas as requisições ao backend criando um serviço do tipo Interceptor
+  2. Aprendemos como anexar o token a todas as requisições ao backend criando um serviço do tipo Interceptor
 
-    3. Criamos as funções de curtir e excluir e aprendemos mais sobre os operadores *mapTo* e *catchError*
+  3. Criamos as funções de curtir e excluir e aprendemos mais sobre os operadores *mapTo* e *catchError*
+
+---
+
+
+
+
+
+# Aula 4: Comentários
+
+  ## Sobre o método *switchMap*:
+  O método **switchMap** é um operador do RxJS, que é uma biblioteca usada em Angular 11 para trabalhar com programação reativa. O **switchMap** é usado para transformar um Observable em outro Observable, permitindo a composição de várias fontes de dados em um único fluxo de dados.
+
+  O método **switchMap** é usado para fazer uma operação de "troca" (ou "switch") entre um Observable fonte e um Observable secundário. Ele recebe uma função como argumento, que é chamada para cada valor emitido pelo Observable fonte. Essa função retorna um novo Observable, que substituirá o Observable fonte. Em outras palavras, o **switchMap** troca um Observable por outro.
+
+  Por exemplo, imagine que você tenha um serviço que faz uma chamada HTTP para buscar dados de um servidor. Usando o **switchMap**, você pode transformar essa chamada HTTP em um Observable que emite os dados retornados pelo servidor. Você pode, então, usar o resultado desse Observable para fazer outra chamada HTTP, e assim por diante.
+
+  Aqui está um exemplo de como o switchMap pode ser usado em um componente Angular:
+  ```typescript
+    import { Component } from '@angular/core';
+    import { Observable } from 'rxjs';
+    import { switchMap } from 'rxjs/operators';
+    import { DataService } from './data.service';
+
+    @Component({
+      selector: 'app-meus-dados',
+      template: `
+        <div *ngIf="dados$ | async as dados">
+          <h2>{{ dados.nome }}</h2>
+          <p>{{ dados.endereco }}</p>
+        </div>
+      `
+    })
+    export class MeusDadosComponent {
+      dados$: Observable<any>;
+
+      constructor(private dataService: DataService) { }
+
+      ngOnInit() {
+        this.dados$ = this.dataService.getUsuario()
+          .pipe(switchMap(usuario => this.dataService.getEndereco(usuario.id)));
+      }
+    }
+  ```
+  Neste exemplo, o componente MeusDadosComponent usa o serviço DataService para buscar dados de um usuário e seu endereço. O método getUsuario() retorna um Observable que emite um objeto usuario, que contém um id. Usando o switchMap, o componente pode trocar o Observable emitido por getUsuario() por outro Observable emitido por getEndereco(usuario.id), que busca o endereço do usuário pelo seu ID. O resultado é que o Observable final dados$ emite um objeto que contém as informações do usuário e do endereço. Quando a página é renderizada, as informações são exibidas usando o *ngIf e a sintaxe do async pipe.
+
+  ## Sobre o método *tap*:
+  O método tap é um operador do RxJS que é comumente usado em Angular 11 para depuração, logging e efeitos colaterais. O tap não altera o fluxo de dados do Observable, mas permite executar uma função com os dados emitidos pelo Observable, sem afetar a saída do Observable.
+
+  O tap recebe uma função como argumento, que é chamada para cada valor emitido pelo Observable. Essa função pode fazer qualquer coisa, como imprimir informações no console, atualizar uma variável, fazer uma chamada de serviço ou qualquer outra operação que não afete o fluxo de dados do Observable.
+
+  Por exemplo, imagine que você tenha um componente que faz uma chamada HTTP para buscar dados de um servidor e, em seguida, os exibe em uma tabela. Você pode usar o método tap para imprimir os dados no console para depuração e para atualizar uma variável que controla se os dados foram carregados com sucesso.
+
+  Aqui está um exemplo de como o tap pode ser usado em um componente Angular:
+  ```typescript
+  import { Component } from '@angular/core';
+  import { HttpClient } from '@angular/common/http';
+  import { tap } from 'rxjs/operators';
+
+  @Component({
+    selector: 'app-meus-dados',
+    template: `
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.telefone }}</td>
+          </tr>
+        </tbody>
+      </table>
+    `
+  })
+  export class MeusDadosComponent {
+    usuarios: any[];
+
+    constructor(private http: HttpClient) { }
+
+    ngOnInit() {
+      this.http.get<any[]>('https://jsonplaceholder.typicode.com/users')
+        .pipe(tap(usuarios => console.log(usuarios)))
+        .subscribe(usuarios => this.usuarios = usuarios);
+    }
+  }
+  ```
+  Neste exemplo, o componente MeusDadosComponent usa o serviço HttpClient do Angular para buscar dados de usuários de uma API pública. Usando o método tap, o componente pode imprimir os dados no console para depuração. Além disso, o tap atualiza uma variável usuarios com os dados retornados pela chamada HTTP. Finalmente, o componente usa o *ngFor para exibir os dados em uma tabela.
+
+  Em resumo, o método tap é usado para executar efeitos colaterais em um Observable, sem afetar seu fluxo de dados. Ele é útil para depuração, logging e atualização de variáveis, permitindo que você observe o fluxo de dados do Observable e execute ações secundárias ao mesmo tempo.
+
+  ## Sobre o **Resolver**:
+  Em Angular 11, o "resolver" é um recurso que permite pré-carregar dados antes de carregar um componente. Ele é usado para resolver dados que um componente precisa antes que o próprio componente seja exibido na tela.
+
+  O Resolver é uma classe que implementa a interface "Resolve" e fornece uma lógica personalizada para pré-carregar dados antes que um componente seja carregado. O Resolver pode ser adicionado a uma rota em um arquivo de roteamento do Angular. Quando uma rota com um Resolver é acionada, o Resolver é chamado para pré-carregar os dados necessários. Somente quando o Resolver for concluído, o componente será carregado.
+
+  O Resolver é útil em situações em que um componente precisa de dados de um serviço ou API antes que ele possa ser exibido na tela. Pré-carregar esses dados pode melhorar o desempenho da aplicação, pois o usuário não precisa esperar pela resposta da API ou serviço após a exibição do componente. Além disso, o Resolver pode ser usado para validar as permissões do usuário antes de permitir que um componente seja exibido.
+
+  Em resumo, a função do Resolver em Angular 11 é pré-carregar dados necessários para um componente antes que o próprio componente seja exibido na tela.
+
+
 
 
 
