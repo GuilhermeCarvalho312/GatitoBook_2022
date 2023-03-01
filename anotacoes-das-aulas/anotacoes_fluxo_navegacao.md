@@ -387,6 +387,22 @@
 
   Em resumo, a função do Resolver em Angular 11 é pré-carregar dados necessários para um componente antes que o próprio componente seja exibido na tela.
 
+  ## O que foi feito na aula 4:
+  1. Como carregar informações do servidor enquanto a rota é carregada utilizando o serviço do tipo Resolver
+  2. Criamos o componente de comentários e anexamos ele ao nosso componente de detalhe do animal
+  3. Aprendemos a como resetar o formulário após a requisição utilizando o operador tap
+
+--- 
+
+# Aula 5: Novo Animal
+
+  ## O que foi feito na Aula 5: 
+  1. Como criar CSS para um componente específico, criando a animação do Menu da aplicação
+  2. Criamos um serviço de upload e aprendemos como enviar uma foto para nosso backend
+  3. Aprendemos a utilizar o HttpClient do Angular para monitorar o progresso da operação de upload.
+  4. Como criar o pacote do nosso projeto de front-end para ser enviado para a produção através do comando ng build.
+
+
 
 
 

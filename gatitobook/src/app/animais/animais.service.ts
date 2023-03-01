@@ -70,4 +70,24 @@ export class AnimaisService {
         })
       );
   }
+
+  /**
+   * @name curtir
+   * @description cria um objeto FormData e adiciona os valores dos parâmetros como pares chave-valor no objeto FormData.
+   * @param descricao uma string que representa uma descrição do arquivo que será enviado
+   * @param permiteComentario valor booleano que indica se os usuários podem comentar o arquivo após o envio
+   * @param arquivo objeto do tipo File que representa o arquivo a ser enviado
+   * @returns {void}
+   */
+  public upload(descricao: string, permiteComentario: boolean, arquivo: File) {
+    const formData = new FormData();
+    formData.append('description', descricao);
+    formData.append('allowComments', permiteComentario ? 'true' : 'false');
+    formData.append('imageFile', arquivo);
+
+    return this.httpClient.post(`${API}/photos/upload`, formData, {
+      observe: 'events',
+      reportProgress: true,
+    });
+  }
 }
